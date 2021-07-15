@@ -4,7 +4,7 @@ import styles from "./components/container.module.css";
 import ContactsList from "./components/ContactList/ContactList";
 import Filter from "./components/Filter/Filter";
 import { connect } from "react-redux";
-
+import { getLoading } from "./components/redux/phonebook/contacts-selectors";
 import { fetchContacts } from "./components/redux/phonebook/phonebook-operation";
 import "./App.css";
 
@@ -30,7 +30,7 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  isLoadingContacts: state.loading,
+  isLoadingContacts: getLoading(state),
 });
 const mapDispatchToProps = (dispatch) => ({
   fetchContacts: () => dispatch(fetchContacts()),
